@@ -54,7 +54,7 @@ def createboard(a, b):
     img1.show(titel)
     data = asarray(img1)
     cv2.imshow(titel, data)
-    #img1.save('paste.jpg', quality=95)
+    img1.save('paste.jpg', quality=95)
         
 
     #cv2.imshow(titel, npo)
