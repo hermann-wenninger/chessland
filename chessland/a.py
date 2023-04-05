@@ -1,5 +1,5 @@
 '''Representation for the Chesspices and Bitboard'''
-# ENGLISH          DEUTSCH
+# ENGLISH               DEUTSCH
 # Bishop = B | b      = Läufer   = L | l
 # King   = K | k      = King     = K | k
 # Queen  = Q | q      = Dame     = D | d
