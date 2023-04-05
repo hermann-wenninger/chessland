@@ -1,7 +1,16 @@
+'''Representation for the Chesspices and Bitboard'''
+# ENGLISH          DEUTSCH
+# Bishop = B | b      = Läufer   = L | l
+# King   = K | k      = King     = K | k
+# Queen  = Q | q      = Dame     = D | d
+# Pawn   = P | p      = Bauer    = B | b
+# Rock   = R | r      = Turm     = T | t
+# Horse  = S | s      = Springer = S | s
+
 
 CHESS_SYMBOLS_ENG = {
     "R": "♖", "r": "♜",
-    "N": "♘", "n": "♞",
+    "S": "♘", "s": "♞",
     "B": "♗", "b": "♝",
     "Q": "♕", "q": "♛",
     "K": "♔", "k": "♚",
@@ -11,7 +20,7 @@ CHESS_SYMBOLS_ENG = {
 
 CHESS_SYMBOLS_DE = {
     "T": "♖", "t": "♜",
-    "P": "♘", "p": "♞",
+    "S": "♘", "s": "♞",
     "L": "♗", "l": "♝",
     "D": "♕", "d": "♛",
     "K": "♔", "k": "♚",
