@@ -6,12 +6,15 @@ from PIL import Image
 from numpy import asarray
 
 
-#im = cv2.imread('k.png')
-#img = cv2.cvtColor(im, cv2.COLOR_BGR2RGB)  
-#print(img)
-#print(np.shape(img))
-#front = (img[:,:,0] / 255).astype(int)
-#print(np.shape(front))
+startpos = [['br','bn','bb','bq','bk','bb','bn','br']
+                 ['bp','bp','bp','bp','bp','bp','bp','bp']
+                 ['','','','','','','','']
+                 ['','','','','','','','']
+                 ['','','','','','','','']
+                 ['','','','','','','','']
+                 ['wp','wp','wp','wp','wp','wp','wp','wp']
+                 ['wr','wn','wb','wq','wk','wb','wn','wr']]
+
 
 a = input('spieler 1:')
 b = input('spieler 2:')
@@ -49,6 +52,9 @@ def createboard(a, b):
         c1 = c1 + feld
    
     img1 = Image.fromarray(np.uint8(npo * 255) , 'L')
+    for i in startpos:
+        print(i)
+
     img2 = Image.open('../images/n.png')
     img1.paste(img2,(160,160))
     img1.show(titel)
