@@ -16,17 +16,18 @@ x = [['br','bn','bb','bq','bk','bb','bn','br'],
     ['wr','wn','wb','wq','wk','wb','wn','wr']]
 
 
-a = input('spieler 1:')
-b = input('spieler 2:')
 
 
-def createboard(a, b):
+
+def startboard(a, b):
+    a = input('spieler 1:')
+    b = input('spieler 2:')
     number = 1
     titel = "Spiel"+ str(number) + " " + a +" spielt weis " + "gegen " + b + " spielt schwarz"
     spielfeldgr = 640
     feld = int(spielfeldgr/8)
     npo = np.zeros((spielfeldgr,spielfeldgr)) 
-    #print(npo)
+    
     cb = 0
     cw = 1
     r1 = 0
@@ -38,7 +39,7 @@ def createboard(a, b):
             if i % 2 == 0:
                 if j % 2 == 0:
                     npo[r:c, r1:c1]=[cw]
-                    #print(npo)
+                    
                 else:
                     npo[r:c, r1:c1]=[cb]
             else:
@@ -55,7 +56,7 @@ def createboard(a, b):
     for i in range(len(x)):
         for j in range(len(x[i])):
             
-            datei = "../images/" + str(x[i][j]) + ".png"
+            datei = "../figures/" + str(x[i][j]) + ".png"
            
             
             if x[i][j] == "":
@@ -65,14 +66,15 @@ def createboard(a, b):
     img1.show(titel)
     data = asarray(img1)
     cv2.imshow(titel, data)
-    img1.save('paste.jpg', quality=95)
+    a,i = 2,2
+    img1.save(f'../images/spiel{a}_zug{i}.jpg', quality=95)
         
 
-    #cv2.imshow(titel, npo)
+    
     cv2.waitKey()
     cv2.destroyAllWindows()
 
-    #print(npo)
+    
 
 
 createboard(a, b)
