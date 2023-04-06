@@ -6,13 +6,13 @@ from PIL import Image
 from numpy import asarray
 
 
-startpos = [['br','bn','bb','bq','bk','bb','bn','br']
-                 ['bp','bp','bp','bp','bp','bp','bp','bp']
-                 ['','','','','','','','']
-                 ['','','','','','','','']
-                 ['','','','','','','','']
-                 ['','','','','','','','']
-                 ['wp','wp','wp','wp','wp','wp','wp','wp']
+x = [['br','bn','bb','bq','bk','bb','bn','br'],
+                 ['bp','bp','bp','bp','bp','bp','bp','bp'],
+                 ['','','','','','','',''],
+                 ['','','','','','','',''],
+                 ['','','','','','','',''],
+                 ['','','','','','','',''],
+                 ['wp','wp','wp','wp','wp','wp','wp','wp'],
                  ['wr','wn','wb','wq','wk','wb','wn','wr']]
 
 
@@ -52,11 +52,16 @@ def createboard(a, b):
         c1 = c1 + feld
    
     img1 = Image.fromarray(np.uint8(npo * 255) , 'L')
-    for i in startpos:
-        print(i)
-
-    img2 = Image.open('../images/n.png')
-    img1.paste(img2,(160,160))
+    for i in range(len(x)):
+        for j in range(len(x[i])):
+            
+            datei = "../images/" + str(x[i][j]) + ".png"
+           
+            
+            if x[i][j] == "":
+                continue
+            img = Image.open(datei)
+            img1.paste(img,(j*80,i*80))
     img1.show(titel)
     data = asarray(img1)
     cv2.imshow(titel, data)
