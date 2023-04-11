@@ -1,5 +1,14 @@
 from planeboard import startboard
 
+x = [['br','bn','bb','bq','bk','bb','bn','br'],
+    ['bp','bp','bp','bp','bp','bp','bp','bp'],
+    ['','','','','','','',''],
+    ['','','','','','','',''],
+    ['','','','','','','',''],
+    ['','','','','','','',''],
+    ['wp','wp','wp','wp','wp','wp','wp','wp'],
+    ['wr','wn','wb','wq','wk','wb','wn','wr']]
+
 
 class Board():
 
@@ -14,5 +23,5 @@ class Board():
         spielerw = input('spieler 2:')
         return spielersch, spielerw
     
-    def createboard(self,):
-        startboard()
+    def createboard(self,spielerw, spielersch):
+        startboard(spielersch, spielerw)

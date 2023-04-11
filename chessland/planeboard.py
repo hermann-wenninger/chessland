@@ -20,8 +20,7 @@ x = [['br','bn','bb','bq','bk','bb','bn','br'],
 
 
 def startboard(a, b):
-    a = input('spieler 1:')
-    b = input('spieler 2:')
+   
     number = 1
     titel = "Spiel"+ str(number) + " " + a +" spielt weis " + "gegen " + b + " spielt schwarz"
     spielfeldgr = 640
@@ -77,4 +76,4 @@ def startboard(a, b):
     
 
 
-createboard(a, b)
+

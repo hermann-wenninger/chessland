@@ -1,5 +1,14 @@
 import numpy as np
 
+
+start = [['br','bn','bb','bq','bk','bb','bn','br'],
+        ['bp','bp','bp','bp','bp','bp','bp','bp'],
+        ['','','','','','','',''],
+        ['','','','','','','',''],
+        ['','','','','','','',''],
+        ['','','','','','','',''],
+        ['wp','wp','wp','wp','wp','wp','wp','wp'],
+        ['wr','wn','wb','wq','wk','wb','wn','wr']]
 one_to_64 = np.arange(1,65).reshape(8, 8)[::-1]
 one_to_120 = np.arange(0,120).reshape(12,10)[::-1]
 ones = np.ones((8,8), dtype=np.uint8)
@@ -55,6 +64,19 @@ BKCA = 4 #0100
 BQCA = 8 #1000
 
 CASTELBIT = {WKCA:1,WQCA:2,BKCA:4,BQCA:8} # idee from bluefeversoft
+
+
+
+
+
+
+
+
+
+
+
+
+
 def structtest():
     print('one_to_64',one_to_64)
     print('ones',ones)
