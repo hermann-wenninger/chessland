@@ -14,8 +14,8 @@ start = [['br','bn','bb','bq','bk','bb','bn','br'],
 w_king_alive = True
 b_king_alive = True
 zug = 1
-WHITEPIECES = ['wr','wn','wb','wq','wk','bp']
-BLACKPIECES = ['br','bn','bb','bq','bk','bp']
+#WHITEPIECES = ['wr','wn','wb','wq','wk','bp']
+#BLACKPIECES = ['br','bn','bb','bq','bk','bp']
 ALLPIECES = WHITEPIECES + BLACKPIECES
 
 def iterate_over_board(start, COLOR_OF_PICES):
