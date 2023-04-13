@@ -70,17 +70,28 @@ def take_spezial_pices(pool,color_rank):
     return ranklist
 
 
+def whitepawn_start():
+    '''first step of a pawn'''
+    whitepawns = take_spezial_pices(x,'wp')
+    print(whitepawns)
+    #a = getnum + 9
+    #b = getnum +11
+    #x = getnum + 10
+    #y = getnum + 20
+
+
 
 def zug_black():
     print('zug schwarz')
     x, y = iterate_over_black(start, BLACKPIECES)
-    take_spezial_pices(x, 'bp')
+   
    
 
 def zug_white():
     print('zug weiß')
     x, y = iterate_over_white(start, WHITEPIECES)
-    take_spezial_pices(x, 'wp')
+    
+    whitepawn_start()
    
 
 while w_king_alive and b_king_alive:
