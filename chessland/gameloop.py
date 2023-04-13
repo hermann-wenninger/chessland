@@ -24,7 +24,7 @@ def iterate_over_black(start, COLOR_OF_PICES):
     the identity of sqares
     the rank of the pice
     '''
-    print('iterate over board')
+    print('iterate over black board')
     OUTCOME_B = []
     justnum_b = []
     for i , x in enumerate(start):
@@ -53,7 +53,7 @@ def iterate_over_white(start, COLOR_OF_PICES):
         for j, pice in enumerate(x):
             if pice in COLOR_OF_PICES:
                 squarenum = TABLE[str(i)+str(j)]
-                #OUTCOME is a list with data from black or white[pice boardposition 120ernummer]
+                #OUTCOME is a list with data from white[pice boardposition 120ernummer]
                 OUTCOME_W.append([pice,SQUARESSWITCH[squarenum],squarenum])
                 justnum_w.append(squarenum)
     print(OUTCOME_W)
@@ -70,32 +70,38 @@ def take_spezial_pices(pool,color_rank):
     return ranklist
 
 
-def whitepawn_start():
+def whitepawn_start(OUTCOME_W,justnum_w,justnum_b):
     '''first step of a pawn'''
-    whitepawns = take_spezial_pices(x,'wp')
+    whitepawns = take_spezial_pices(OUTCOME_W,'wp')
     print(whitepawns)
-    #a = getnum + 9
-    #b = getnum +11
-    #x = getnum + 10
-    #y = getnum + 20
+    print(justnum_b)
+    print(justnum_w)
+    print(OUTOFBOARD)
+    for pawn in  whitepawns:
+        a = pawn[2] + 9
+        b = pawn[2] +11
+        x = pawn[2] + 10
+        y = pawn[2] + 20
+        print(a,b,x,y)
 
 
 
 def zug_black():
     print('zug schwarz')
-    x, y = iterate_over_black(start, BLACKPIECES)
+    #x, y = iterate_over_black(start, BLACKPIECES)
    
    
 
 def zug_white():
     print('zug weiß')
-    x, y = iterate_over_white(start, WHITEPIECES)
+    OUTCOME_B, justnum_b = iterate_over_black(start, BLACKPIECES)
+    OUTCOME_W, justnum_w = iterate_over_white(start, WHITEPIECES)
     
-    whitepawn_start()
+    whitepawn_start(OUTCOME_W,justnum_w, justnum_b)
    
 
 while w_king_alive and b_king_alive:
-    iterate_over_black(start, BLACKPIECES)
+    
     if zug % 2 == 0:
        
         zug_black()
@@ -108,11 +114,6 @@ while w_king_alive and b_king_alive:
 
 
 
-def whitepawn_start(getnum):
-    '''first step of a pawn'''
-    a = getnum + 9
-    b = getnum +11
-    x = getnum + 10
-    y = getnum + 20
+print(SQUARES)
 
 
