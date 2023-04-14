@@ -52,21 +52,21 @@ def startboard(a, b):
         c1 = c1 + feld
    
     img1 = Image.fromarray(np.uint8(npo * 255) , 'L')
-    for i in range(len(x)):
-        for j in range(len(x[i])):
+    # for i in range(len(x)):
+    #     for j in range(len(x[i])):
             
-            datei = "../figures/" + str(x[i][j]) + ".png"
+    #         datei = str(x[i][j]) + ".png"
            
             
-            if x[i][j] == "":
-                continue
-            img = Image.open(datei)
-            img1.paste(img,(j*80,i*80))
-    img1.show(titel)
+    #         if x[i][j] == "":
+    #             continue
+    #         img = Image.open(datei)
+    #         img1.paste(img,(j*80,i*80))
+    img1.show('titel')
     data = asarray(img1)
-    cv2.imshow(titel, data)
-    a,i = 2,2
-    img1.save(f'../images/spiel{a}_zug{i}.jpg', quality=95)
+    cv2.imshow('titel', data)
+    #a,i = 3,3
+    #img1.save(f'../images/spiel{a}_zug{i}.jpg', quality=95)
         
 
     

@@ -1,4 +1,4 @@
-from chessland.figures.planeboard import startboard
+from planeboard import startboard
 
 x = [['br','bn','bb','bq','bk','bb','bn','br'],
     ['bp','bp','bp','bp','bp','bp','bp','bp'],

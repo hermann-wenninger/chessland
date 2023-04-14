@@ -1,3 +1,4 @@
+from numba import jit
 from validation import *
 
 
@@ -18,6 +19,7 @@ zug = 1
 #BLACKPIECES = ['br','bn','bb','bq','bk','bp']
 ALLPIECES = WHITEPIECES + BLACKPIECES
 
+#@jit
 def iterate_over_black(start, COLOR_OF_PICES):
     '''iterate over all pices from one black pices and give back 
     the number of the 120er board 
@@ -40,7 +42,7 @@ def iterate_over_black(start, COLOR_OF_PICES):
     print('end of black board iteration')
     return OUTCOME_B, justnum_b
 
-
+#@jit
 def iterate_over_white(start, COLOR_OF_PICES):
     '''iterate over all pices from one whitepices and give back 
     the number of the 120er board 
@@ -64,7 +66,7 @@ def iterate_over_white(start, COLOR_OF_PICES):
     return OUTCOME_W, justnum_w
 
 
-
+#@jit
 def take_spezial_pices(pool,color_rank):
     '''extrakt the OUTCOME list by color and rank'''
     ranklist = [i for i in pool if i[0]== color_rank]
@@ -75,38 +77,67 @@ def take_spezial_pices(pool,color_rank):
     print('end of take special pices')
     return ranklist ,ranklist_justnum
 
+#@jit
+def search_pice_by_num(outcome_list, number):
+    for i in outcome_list:
+        if i[2] == number:
+            return i[0]
+        
+def sort_attacs_by_rank():
+    pass
 
+
+#@jit
 def whitepawn_start(OUTCOME_W,justnum_w,justnum_b):
     '''first step of a pawn'''
+    allpieno = justnum_w +justnum_b
     possible_moves = []
     possible_attacs = []
     whitepawns, whitepawns_justnum = take_spezial_pices(OUTCOME_W,'wp')
     print(whitepawns)
-    print(justnum_b)
+    print('justnum_b',justnum_b)
     print(justnum_w)
     print(OUTOFBOARD)
-    print('whtepawns_justnum', whitepawns_justnum)
+    print('whitepawns_justnum', whitepawns_justnum)
     for pawn in  whitepawns:
-        #a = pawn[2] + 9
-        #b = pawn[2] +11
+        
         x = pawn[2] + 10
+        if x not in allpieno:
+            possible_moves.append(['wp',pawn[2],x,])
+        else:
+            continue
+        
         y = pawn[2] + 20
+        if y not in allpieno:
+            possible_moves.append(['wp',pawn[2],y])
         print(x,y)
+    print(possible_moves)
+    for pawn in whitepawns:
+        a = pawn[2] + 9
+        b = pawn[2] +11
+        if a in justnum_b:
+            possible_attacs.append(['wp',pawn[2],a])
+        if b in justnum_b:
+            possible_attacs.append(['wp',pawn[2],b])
+    print(possible_attacs)
 
 
-
+#@jit
 def zug_black():
     print('zug schwarz')
     #x, y = iterate_over_black(start, BLACKPIECES)
    
    
-
+#@jit
 def zug_white():
     print('zug weiß')
     OUTCOME_B, justnum_b = iterate_over_black(start, BLACKPIECES)
     OUTCOME_W, justnum_w = iterate_over_white(start, WHITEPIECES)
+    POSSIBLE_MOVES =[]
+    POSSIBLE_ATTACS = []
     
     whitepawn_start(OUTCOME_W,justnum_w, justnum_b)
+    
    
 
 while w_king_alive and b_king_alive:
