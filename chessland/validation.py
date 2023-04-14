@@ -79,7 +79,8 @@ CASTELBIT = {WKCA:1,WQCA:2,BKCA:4,BQCA:8} # idee from bluefeversoft
 OUTOFB_white = []
 OUTOFB_black = []
 
-
+whitepawnline = [31,32,33,34,35,36,37,38]
+blackpawnline = [81,82,83,84,85,86,87,88]
 
 
 
@@ -93,7 +94,7 @@ def structtest():
     print('zeros',zeros)
     print('board',board)
     print('filonum',filonum)
-    print('one-to_120',one_to_120)
+    
     print('PIECES',PIECES)
     print('FILES',FILES)
     print('RANKS',RANKS)
@@ -102,4 +103,6 @@ def structtest():
     print('THETRUTH',THETRUTH)
     print('ALLPIECES', ALLPIECES)
     print('SQUARESWITCH',SQUARESSWITCH)
+    print('one-to_120',one_to_120)
 
+structtest()

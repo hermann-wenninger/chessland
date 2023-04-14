@@ -6,7 +6,7 @@ start = [['br','bn','bb','bq','bk','bb','bn','br'],
         ['','','','','','','',''],
         ['','','','','','','',''],
         ['','','','','','','',''],
-        ['','','','','','','',''],
+        ['','bq','','','','','',''],
         ['wp','wp','wp','wp','wp','wp','wp','wp'],
         ['wr','wn','wb','wq','wk','wb','wn','wr']]
 
@@ -37,6 +37,7 @@ def iterate_over_black(start, COLOR_OF_PICES):
     print(OUTCOME_B)
     print(justnum_b)
     print(len(OUTCOME_B))
+    print('end of black board iteration')
     return OUTCOME_B, justnum_b
 
 
@@ -59,6 +60,7 @@ def iterate_over_white(start, COLOR_OF_PICES):
     print(OUTCOME_W)
     print(justnum_w)
     print(len(OUTCOME_W))
+    print('end of whiteboarditeration')
     return OUTCOME_W, justnum_w
 
 
@@ -66,23 +68,30 @@ def iterate_over_white(start, COLOR_OF_PICES):
 def take_spezial_pices(pool,color_rank):
     '''extrakt the OUTCOME list by color and rank'''
     ranklist = [i for i in pool if i[0]== color_rank]
+    ranklist_justnum = [i[2] for i in pool if i[0] == color_rank]
+    print('take special pices')
     print(ranklist)
-    return ranklist
+    print(ranklist_justnum)
+    print('end of take special pices')
+    return ranklist ,ranklist_justnum
 
 
 def whitepawn_start(OUTCOME_W,justnum_w,justnum_b):
     '''first step of a pawn'''
-    whitepawns = take_spezial_pices(OUTCOME_W,'wp')
+    possible_moves = []
+    possible_attacs = []
+    whitepawns, whitepawns_justnum = take_spezial_pices(OUTCOME_W,'wp')
     print(whitepawns)
     print(justnum_b)
     print(justnum_w)
     print(OUTOFBOARD)
+    print('whtepawns_justnum', whitepawns_justnum)
     for pawn in  whitepawns:
-        a = pawn[2] + 9
-        b = pawn[2] +11
+        #a = pawn[2] + 9
+        #b = pawn[2] +11
         x = pawn[2] + 10
         y = pawn[2] + 20
-        print(a,b,x,y)
+        print(x,y)
 
 
 
@@ -114,6 +123,6 @@ while w_king_alive and b_king_alive:
 
 
 
-print(SQUARES)
+#print(SQUARES)
 
 
