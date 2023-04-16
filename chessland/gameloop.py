@@ -153,9 +153,11 @@ def write_move(best_move):
     return pice_move_from_to
 
 def move_on_boards(bestmovefromto):
-    print(bestmovefromto)
+    print('move on boards')
+    print('bestmove',bestmovefromto)
     print(pibo)
     print(start)
+
    
 
 #@jit
@@ -176,7 +178,7 @@ def zug_white():
     append_moves_and_attacs(a,b,poss_moves,poss_attacs)
     bm = take_best_move(poss_moves, poss_attacs)
     pmfto = write_move(bm)
-    move_on_boards(start)
+    move_on_boards(pmfto)
    
 
 while w_king_alive and b_king_alive:
