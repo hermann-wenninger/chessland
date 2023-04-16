@@ -1,10 +1,15 @@
 from numba import jit
 from validation import *
+from validation import SQUARESSWITCH as switch
+from validation import PICEBOARD as pibo
+from validation import start as srt
+import numpy as np
+import random
 
 
 start = [['br','bn','bb','bq','bk','bb','bn','br'],
         ['bp','bp','bp','bp','bp','bp','bp','bp'],
-        ['','','','','','','',''],
+        ['','wq','','','','','',''],
         ['','','','','','','',''],
         ['','','','','','','',''],
         ['','bq','','','','','',''],
@@ -82,7 +87,7 @@ def search_pice_by_num(outcome_list, number):
     for i in outcome_list:
         if i[2] == number:
             return i[0]
-        
+#@jit        
 def sort_attacs_by_rank():
     pass
 
@@ -94,11 +99,11 @@ def whitepawn_start(OUTCOME_W,justnum_w,justnum_b):
     possible_moves = []
     possible_attacs = []
     whitepawns, whitepawns_justnum = take_spezial_pices(OUTCOME_W,'wp')
-    print(whitepawns)
-    print('justnum_b',justnum_b)
-    print(justnum_w)
-    print(OUTOFBOARD)
-    print('whitepawns_justnum', whitepawns_justnum)
+    #print(whitepawns)
+    #print('justnum_b',justnum_b)
+    #print(justnum_w)
+    #print(OUTOFBOARD)
+    #print('whitepawns_justnum', whitepawns_justnum)
     for pawn in  whitepawns:
         
         x = pawn[2] + 10
@@ -110,7 +115,7 @@ def whitepawn_start(OUTCOME_W,justnum_w,justnum_b):
         y = pawn[2] + 20
         if y not in allpieno:
             possible_moves.append(['wp',pawn[2],y])
-        print(x,y)
+        #print(x,y)
     print(possible_moves)
     for pawn in whitepawns:
         a = pawn[2] + 9
@@ -120,7 +125,38 @@ def whitepawn_start(OUTCOME_W,justnum_w,justnum_b):
         if b in justnum_b:
             possible_attacs.append(['wp',pawn[2],b])
     print(possible_attacs)
+    return possible_moves, possible_attacs
 
+def append_moves_and_attacs(possible_moves, possible_attacs, moves, attacs):
+    '''append possible moves and possible attacs to the lists'''
+    moves.append(possible_moves)
+    attacs.append(possible_attacs)
+    print('append_moves',moves)
+    print('append attacs', attacs)
+    return moves, attacs
+
+def take_best_move(moves,attacs):
+    '''later i will implement this function with a other algo'''
+    all = moves[0] + attacs[0]
+    x = random.choice(all)
+    print('take best zug',x)
+    return x
+
+def write_move(best_move):
+    '''all data for a real move and the annotation'''
+    move = best_move
+    print(move[0])
+    print(switch[move[1]],move[1])
+    print(switch[move[2]],move[2])
+    print(move[0], ' move from ',switch[move[1]], ' to ',switch[move[2]], 'is a switch from number ',move[1], ' to number ',move[2])
+    pice_move_from_to = move[0],switch[move[1]],move[1],switch[move[2]],move[2]
+    return pice_move_from_to
+
+def move_on_boards(bestmovefromto):
+    print(bestmovefromto)
+    print(pibo)
+    print(start)
+   
 
 #@jit
 def zug_black():
@@ -133,11 +169,14 @@ def zug_white():
     print('zug weiß')
     OUTCOME_B, justnum_b = iterate_over_black(start, BLACKPIECES)
     OUTCOME_W, justnum_w = iterate_over_white(start, WHITEPIECES)
-    POSSIBLE_MOVES =[]
-    POSSIBLE_ATTACS = []
+    poss_moves =[]
+    poss_attacs = []
     
-    whitepawn_start(OUTCOME_W,justnum_w, justnum_b)
-    
+    a,b = whitepawn_start(OUTCOME_W,justnum_w, justnum_b)
+    append_moves_and_attacs(a,b,poss_moves,poss_attacs)
+    bm = take_best_move(poss_moves, poss_attacs)
+    pmfto = write_move(bm)
+    move_on_boards(start)
    
 
 while w_king_alive and b_king_alive:
@@ -156,13 +195,6 @@ while w_king_alive and b_king_alive:
 
 #print(SQUARES)
 
-x = np.arange(100).reshape(10, 10)
 
-@jit(nopython=True) # Set "nopython" mode for best performance, equivalent to @njit
-def go_fast(a): # Function is compiled to machine code when called the first time
-    trace = 0.0
-    for i in range(a.shape[0]):   # Numba likes loops
-        trace += np.tanh(a[i, i])*0.3 # Numba likes NumPy functions
-    return a + trace              # Numba likes NumPy broadcasting
 
-print(go_fast(x))
+#@jit(nopython=True) # Set "nopython" mode for best performance, equivalent to @njit
