@@ -156,4 +156,13 @@ while w_king_alive and b_king_alive:
 
 #print(SQUARES)
 
+x = np.arange(100).reshape(10, 10)
 
+@jit(nopython=True) # Set "nopython" mode for best performance, equivalent to @njit
+def go_fast(a): # Function is compiled to machine code when called the first time
+    trace = 0.0
+    for i in range(a.shape[0]):   # Numba likes loops
+        trace += np.tanh(a[i, i])*0.3 # Numba likes NumPy functions
+    return a + trace              # Numba likes NumPy broadcasting
+
+print(go_fast(x))

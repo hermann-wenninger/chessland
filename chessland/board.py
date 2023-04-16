@@ -15,7 +15,7 @@ def player():
 
 class Board():
 
-    def __init__(self,spielgroesse,spielerw, spielersch, positionen= x):
+    def __init__(self,spielgroesse,spielerw, spielersch, positionen = x):
         self.spielgr = spielgroesse
         self.spielerw = spielerw
         self.spielersch = spielersch
