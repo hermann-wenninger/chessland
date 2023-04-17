@@ -1,11 +1,12 @@
 import asyncio 
 from util import delay
+import time
  
  
 async def hello_every_second(): 
     for i in range(12): 
         await asyncio.sleep(0.1) 
-        print("Ich führe anderen Code aus, während ich warte!") 
+        print("Ich führe anderen Code aus, während ich warte!", time.time()) 
  
  
 async def main(): 
