@@ -1,3 +1,5 @@
+import numpy as np
+
 '''Representation for the Chesspices and Bitboard'''
 # ENGLISH               DEUTSCH
 # Bishop = B | b      = Läufer   = L | l
@@ -35,5 +37,5 @@ start = [['br','bn','bb','bq','bk','bb','bn','br'],
         ['','','','','','','',''],
         ['wp','wp','wp','wp','wp','wp','wp','wp'],
         ['wr','wn','wb','wq','wk','wb','wn','wr']]
-
-print(start[0][0])
+startstr = np.array(start, dtype=str)
+print(startstr[[6][0],7])
