@@ -49,5 +49,5 @@ start =[['br','bn','bb','bq','bk','bb','bn','br'],
         ['wr','wn','wb','wq','wk','wb','wn','wr']]
 startstr = np.array(start, dtype=str)
 sandboardstr = np.array(sandboard, dtype='U1')
-print(startstr[[6][0],7])
+print(startstr[[6][0],7])#numpy fancy copy with [[][],]
 print(sandboardstr[6][0])
