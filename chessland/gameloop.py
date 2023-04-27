@@ -23,8 +23,8 @@ b_king_alive = True
 
 zug = 1
 
-WHITEPIECES = ['wr','wn','wb','wq','wk','bp']
-BLACKPIECES = ['br','bn','bb','bq','bk','bp']
+#WHITEPIECES = ['wr','wn','wb','wq','wk','bp']
+#BLACKPIECES = ['br','bn','bb','bq','bk','bp']
 
 ALLPIECES = WHITEPIECES + BLACKPIECES
 
@@ -140,7 +140,7 @@ def append_moves_and_attacs(possible_moves, possible_attacs, moves, attacs):
 
 
 def take_best_move(moves,attacs):
-    '''later i will implement this function with a other algo'''
+    '''later i will implement this function with a sort algo'''
     all = moves[0] + attacs[0]
     x = random.choice(all)
     print('take best zug',x)
@@ -160,18 +160,24 @@ def write_move(best_move):
 def move_on_boards(bestmovefromto):
     print('move on boards')
     print('bestmove',bestmovefromto)
-    print(pibo)
-    print(start)
+    print(pibo[bestmovefromto[1]])
+    for i , x in enumerate(start):
+        for j, pice in enumerate(x):
+            print(i,x,j,pice)
+    
+        
+        #for j, pice in enumerate(x):
+            #print(j,pice)
 
    
 
-#@jit
+
 def zug_black():
     print('zug schwarz')
     #x, y = iterate_over_black(start, BLACKPIECES)
    
    
-#@jit
+
 def zug_white():
     print('zug weiß')
     OUTCOME_B, justnum_b = iterate_over_black(start, BLACKPIECES)
