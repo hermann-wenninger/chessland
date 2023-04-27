@@ -1,4 +1,4 @@
-from numba import jit
+
 from validation import *
 from validation import SQUARESSWITCH as switch
 from validation import PICEBOARD as pibo
@@ -16,15 +16,18 @@ start = [['br','bn','bb','bq','bk','bb','bn','br'],
         ['wp','wp','wp','wp','wp','wp','wp','wp'],
         ['wr','wn','wb','wq','wk','wb','wn','wr']]
 
+history = []
 
 w_king_alive = True
 b_king_alive = True
+
 zug = 1
-#WHITEPIECES = ['wr','wn','wb','wq','wk','bp']
-#BLACKPIECES = ['br','bn','bb','bq','bk','bp']
+
+WHITEPIECES = ['wr','wn','wb','wq','wk','bp']
+BLACKPIECES = ['br','bn','bb','bq','bk','bp']
+
 ALLPIECES = WHITEPIECES + BLACKPIECES
 
-#@jit
 def iterate_over_black(start, COLOR_OF_PICES):
     '''iterate over all pices from one black pices and give back 
     the number of the 120er board 
@@ -47,7 +50,7 @@ def iterate_over_black(start, COLOR_OF_PICES):
     print('end of black board iteration')
     return OUTCOME_B, justnum_b
 
-#@jit
+
 def iterate_over_white(start, COLOR_OF_PICES):
     '''iterate over all pices from one whitepices and give back 
     the number of the 120er board 
@@ -71,7 +74,7 @@ def iterate_over_white(start, COLOR_OF_PICES):
     return OUTCOME_W, justnum_w
 
 
-#@jit
+
 def take_spezial_pices(pool,color_rank):
     '''extrakt the OUTCOME list by color and rank'''
     ranklist = [i for i in pool if i[0]== color_rank]
@@ -82,17 +85,17 @@ def take_spezial_pices(pool,color_rank):
     print('end of take special pices')
     return ranklist ,ranklist_justnum
 
-#@jit
+
 def search_pice_by_num(outcome_list, number):
     for i in outcome_list:
         if i[2] == number:
             return i[0]
-#@jit        
+       
 def sort_attacs_by_rank():
     pass
 
 
-#@jit
+
 def whitepawn_start(OUTCOME_W,justnum_w,justnum_b):
     '''first step of a pawn'''
     allpieno = justnum_w +justnum_b
@@ -105,18 +108,16 @@ def whitepawn_start(OUTCOME_W,justnum_w,justnum_b):
     #print(OUTOFBOARD)
     #print('whitepawns_justnum', whitepawns_justnum)
     for pawn in  whitepawns:
-        
         x = pawn[2] + 10
         if x not in allpieno:
             possible_moves.append(['wp',pawn[2],x,])
         else:
             continue
-        
         y = pawn[2] + 20
         if y not in allpieno:
             possible_moves.append(['wp',pawn[2],y])
         #print(x,y)
-    print(possible_moves)
+    print('possible_moves',possible_moves)
     for pawn in whitepawns:
         a = pawn[2] + 9
         b = pawn[2] +11
@@ -124,8 +125,10 @@ def whitepawn_start(OUTCOME_W,justnum_w,justnum_b):
             possible_attacs.append(['wp',pawn[2],a])
         if b in justnum_b:
             possible_attacs.append(['wp',pawn[2],b])
-    print(possible_attacs)
+    print('possible_attacs',possible_attacs)
     return possible_moves, possible_attacs
+
+
 
 def append_moves_and_attacs(possible_moves, possible_attacs, moves, attacs):
     '''append possible moves and possible attacs to the lists'''
@@ -135,12 +138,14 @@ def append_moves_and_attacs(possible_moves, possible_attacs, moves, attacs):
     print('append attacs', attacs)
     return moves, attacs
 
+
 def take_best_move(moves,attacs):
     '''later i will implement this function with a other algo'''
     all = moves[0] + attacs[0]
     x = random.choice(all)
     print('take best zug',x)
     return x
+
 
 def write_move(best_move):
     '''all data for a real move and the annotation'''
