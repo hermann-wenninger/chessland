@@ -160,10 +160,12 @@ def write_move(best_move):
 def move_on_boards(bestmovefromto):
     print('move on boards')
     print('bestmove',bestmovefromto)
-    print(pibo[bestmovefromto[1]])
-    for i , x in enumerate(start):
-        for j, pice in enumerate(x):
-            print(i,x,j,pice)
+    pibo[bestmovefromto[1]]= ''
+    pibo[bestmovefromto[3]] = bestmovefromto[0]
+    print(pibo)
+    #for i , x in enumerate(start):
+        #for j, pice in enumerate(x):
+            #print(i,x,j,pice)
     
         
         #for j, pice in enumerate(x):
