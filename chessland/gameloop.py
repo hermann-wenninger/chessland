@@ -163,6 +163,9 @@ def move_on_boards(bestmovefromto):
     pibo[bestmovefromto[1]]= ''
     pibo[bestmovefromto[3]] = bestmovefromto[0]
     print(pibo)
+    for i in pibo:
+        print(pibo[i])
+        
     #for i , x in enumerate(start):
         #for j, pice in enumerate(x):
             #print(i,x,j,pice)
