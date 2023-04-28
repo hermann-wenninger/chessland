@@ -163,23 +163,16 @@ def move_on_boards(bestmovefromto):
     pibo[bestmovefromto[1]]= ''
     pibo[bestmovefromto[3]] = bestmovefromto[0]
     print(pibo)
-    for i in pibo:
-        print(pibo[i])
-        
-    #for i , x in enumerate(start):
-        #for j, pice in enumerate(x):
-            #print(i,x,j,pice)
-    
-        
-        #for j, pice in enumerate(x):
-            #print(j,pice)
+    start = np.reshape([pibo[i] for i in pibo],(8, 8))
+    print(start)
+    return start
+
+   
 
    
 
 
-def zug_black():
-    print('zug schwarz')
-    #x, y = iterate_over_black(start, BLACKPIECES)
+
    
    
 
@@ -195,16 +188,24 @@ def zug_white():
     bm = take_best_move(poss_moves, poss_attacs)
     pmfto = write_move(bm)
     move_on_boards(pmfto)
-   
+    
 
+
+def zug_black():
+    print('zug schwarz')
+    #x, y = iterate_over_black(start, BLACKPIECES)
+    print(x,y)
+
+   
+zug = 0
 while w_king_alive and b_king_alive:
     
-    if zug % 2 == 0:
+    zug_white()
        
-        zug_black()
-    else:
-        print('')
-        zug_white()
+    zug_black()
+   
+    print('roundaround', zug)
+        
     if zug > 2:
         break
     zug +=1
