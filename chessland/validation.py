@@ -11,6 +11,8 @@ start = [['br','bn','bb','bq','bk','bb','bn','br'],
         ['wr','wn','wb','wq','wk','wb','wn','wr']]
 one_to_64 = np.arange(1,65).reshape(8, 8)[::-1]
 one_to_120 = np.arange(0,120).reshape(12,10)[::-1]
+one_to_144 = np.arange(0,144).reshape(12,12)[::-1]
+print(one_to_144)
 ones = np.ones((8,8), dtype=np.uint8)
 zeros  = np.zeros((8,8),dtype=np.uint8)
 board  = np.zeros((8,8),dtype=np.uint8)
