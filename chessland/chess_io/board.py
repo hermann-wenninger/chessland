@@ -1,3 +1,5 @@
+from structur import resetStruct as rs
+
 class Board():
     def __init__(self,startpos):
         self.startpos = startpos
@@ -12,6 +14,8 @@ class Board():
             self.history.append((self.startpos[oldPos],oldPosSquare,'X',self.startpos[newPos],newPosSquare))
 
     def reset(self):
-        self.startpos[newPos] = self.startpos[oldPos]
-        self.startpos[oldPos] = '.'
+        lastE = self.history[-1]
+        if lastE[2] == 'X':
+
+
         del self.history[-1]      
