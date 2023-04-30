@@ -1,4 +1,4 @@
-from numba import jit
+
 from validation import *
 from validation import SQUARESSWITCH as switch
 from validation import PICEBOARD as pibo
@@ -16,15 +16,22 @@ start = [['br','bn','bb','bq','bk','bb','bn','br'],
         ['wp','wp','wp','wp','wp','wp','wp','wp'],
         ['wr','wn','wb','wq','wk','wb','wn','wr']]
 
+history = []
 
 w_king_alive = True
 b_king_alive = True
+
 zug = 1
+
 #WHITEPIECES = ['wr','wn','wb','wq','wk','bp']
 #BLACKPIECES = ['br','bn','bb','bq','bk','bp']
+
 ALLPIECES = WHITEPIECES + BLACKPIECES
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 840e7b282e1a6301f605c50f519b9fc9e1d1e832
 def iterate_over_black(start, COLOR_OF_PICES):
     '''iterate over all pices from one black pices and give back 
     the number of the 120er board 
@@ -105,18 +112,16 @@ def whitepawn_start(OUTCOME_W,justnum_w,justnum_b):
     #print(OUTOFBOARD)
     #print('whitepawns_justnum', whitepawns_justnum)
     for pawn in  whitepawns:
-        
         x = pawn[2] + 10
         if x not in allpieno:
             possible_moves.append(['wp',pawn[2],x,])
         else:
             continue
-        
         y = pawn[2] + 20
         if y not in allpieno:
             possible_moves.append(['wp',pawn[2],y])
         #print(x,y)
-    print(possible_moves)
+    print('possible_moves',possible_moves)
     for pawn in whitepawns:
         a = pawn[2] + 9
         b = pawn[2] +11
@@ -124,8 +129,10 @@ def whitepawn_start(OUTCOME_W,justnum_w,justnum_b):
             possible_attacs.append(['wp',pawn[2],a])
         if b in justnum_b:
             possible_attacs.append(['wp',pawn[2],b])
-    print(possible_attacs)
+    print('possible_attacs',possible_attacs)
     return possible_moves, possible_attacs
+
+
 
 def append_moves_and_attacs(possible_moves, possible_attacs, moves, attacs):
     '''append possible moves and possible attacs to the lists'''
@@ -135,12 +142,14 @@ def append_moves_and_attacs(possible_moves, possible_attacs, moves, attacs):
     print('append attacs', attacs)
     return moves, attacs
 
+
 def take_best_move(moves,attacs):
-    '''later i will implement this function with a other algo'''
+    '''later i will implement this function with a sort algo'''
     all = moves[0] + attacs[0]
     x = random.choice(all)
     print('take best zug',x)
     return x
+
 
 def write_move(best_move):
     '''all data for a real move and the annotation'''
@@ -155,15 +164,26 @@ def write_move(best_move):
 def move_on_boards(bestmovefromto):
     print('move on boards')
     print('bestmove',bestmovefromto)
+    pibo[bestmovefromto[1]]= ''
+    pibo[bestmovefromto[3]] = bestmovefromto[0]
     print(pibo)
+    start = np.reshape([pibo[i] for i in pibo],(8, 8))
     print(start)
+    return start
 
    
 
+<<<<<<< HEAD
 
 def zug_black():
     print('zug schwarz')
     #x, y = iterate_over_black(start, BLACKPIECES)
+=======
+   
+
+
+
+>>>>>>> 840e7b282e1a6301f605c50f519b9fc9e1d1e832
    
    
 
@@ -179,16 +199,24 @@ def zug_white():
     bm = take_best_move(poss_moves, poss_attacs)
     pmfto = write_move(bm)
     move_on_boards(pmfto)
-   
+    
 
+
+def zug_black():
+    print('zug schwarz')
+    #x, y = iterate_over_black(start, BLACKPIECES)
+    print(x,y)
+
+   
+zug = 0
 while w_king_alive and b_king_alive:
     
-    if zug % 2 == 0:
+    zug_white()
        
-        zug_black()
-    else:
-        print('')
-        zug_white()
+    zug_black()
+   
+    print('roundaround', zug)
+        
     if zug > 2:
         break
     zug +=1

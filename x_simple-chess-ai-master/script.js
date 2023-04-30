@@ -1,9 +1,11 @@
 var board,
     game = new Chess();
+console.log('start')
 
 /*The "AI" part starts here */
 
 var minimaxRoot =function(depth, game, isMaximisingPlayer) {
+    console.log('start')
 
     var newGameMoves = game.ugly_moves();
     var bestMove = -9999;
@@ -17,6 +19,7 @@ var minimaxRoot =function(depth, game, isMaximisingPlayer) {
         if(value >= bestMove) {
             bestMove = value;
             bestMoveFound = newGameMove;
+            console.log(bestMove)
         }
     }
     return bestMoveFound;
@@ -24,6 +27,7 @@ var minimaxRoot =function(depth, game, isMaximisingPlayer) {
 
 var minimax = function (depth, game, alpha, beta, isMaximisingPlayer) {
     positionCount++;
+    console.log('start',positionCount)
     if (depth === 0) {
         return -evaluateBoard(game.board());
     }

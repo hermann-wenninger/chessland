@@ -34,7 +34,7 @@
  */
 
 var Chess = function(fen) {
-
+    
     /* jshint indent: false */
 
     var BLACK = 'b';
