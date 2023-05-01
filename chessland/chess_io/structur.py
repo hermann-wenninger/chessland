@@ -1,4 +1,8 @@
 import numpy as np
+import pprint as pp
+
+#https://arxiv.org/pdf/0704.3773.pdf
+ #CGA 1AVOIDING ROTATED BITBOARDS WITH DIRECT LOOKUPSam Tannous1Durham, North Carolina, USA
 
 
 
@@ -27,7 +31,7 @@ startpos = np.array(position, dtype = np.chararray).reshape(64)
 print(startpos)
 
 
-star_left =        [['a1'],         #CGA 1AVOIDING ROTATED BITBOARDS WITH DIRECT LOOKUPSam Tannous1Durham, North Carolina, USA
+star_left =        [['a1'],        
                  ['b1','a2'],       #https://arxiv.org/pdf/0704.3773.pdf
                ['c1','b2','a3'],
             ['d1','c2','b3','a4'],
@@ -40,7 +44,7 @@ star_left =        [['a1'],         #CGA 1AVOIDING ROTATED BITBOARDS WITH DIRECT
           ['h4','g5','f6','e7','d8'],
             ['h5','g6','f7','e8'],
                ['h6','g7','f8'],
-                 ['h7','g8'],
+                 ['h7','g8'],          
                    ['h8']]
 
 
@@ -63,21 +67,21 @@ star_right =      [['h1'],
 
 
 
-numstar_left =     [[1],         #CGA 1AVOIDING ROTATED BITBOARDS WITH DIRECT LOOKUPSam Tannous1Durham, North Carolina, USA
-                   [2,9],       #https://arxiv.org/pdf/0704.3773.pdf
-                 [3,10,17],
-               [4,11,18,25],
-              [5,12,19,26,33],
-            [6,13,20,27,34,41],
-           [7,14,21,28,35,42,49],
-         [8,15,22,29,36,43,50,57],
-          [16,23,30,37,44,51,58],
-            [24,31,38,45,52,59],
-              [32,39,46,53,60],
-                [40,47,54,61],
-                  [48,55,62],
-                    [56,63],
-                     [64]]
+numstar_left =      [[1],         #CGA 1AVOIDING ROTATED BITBOARDS WITH DIRECT LOOKUPSam Tannous1Durham, North Carolina, USA
+                   [2, 9],       
+                 [3, 10, 17],
+               [4, 11, 18, 25],
+              [5, 12, 19, 26, 33],
+            [6, 13, 20, 27, 34, 41],
+          [7, 14, 21, 28, 35, 42, 49],
+        [8, 15, 22, 29, 36, 43, 50, 57],
+          [16, 23, 30, 37, 44, 51, 58],
+            [24, 31, 38, 45, 52, 59],
+              [32, 39, 46, 53, 60],
+                [40, 47, 54, 61],
+                  [48, 55, 62],
+                    [56, 63],
+                      [64]]
 
 
 
@@ -94,8 +98,8 @@ piboard = {'A8':'r','B8':'n','C8':'b','D8':'q','E8':'k','F8':'b','G8':'n','H8':'
 }
 one_to_64 = np.arange(1,65).reshape(8, 8)[::-1]
 one_to_120 = np.arange(0,120).reshape(12,10)[::-1]
-one_to_144 = np.arange(0,144).reshape(12,12)[::-1]
-print(one_to_144)
+fullboard = np.arange(0,144).reshape(12,12)[::-1]
+pp(fullboard)
 
 
 oneBoard = np.ones((8,8), dtype=np.uint8)
@@ -121,14 +125,14 @@ squares ={'A8':110,'B8':111,'C8':112,'D8':113,'E8':114,'F8':115,'G8':116,'H8':11
           'A2':38,'B2':39,'C2':40,'D2':41,'E2':42,'F2':43,'G2':44,'H2':45,
           'A1':26,'B1':27,'C1':28,'D1':29,'E1':30,'F1':31,'G1':32,'H1':33,}
 
-reset  = {'A8':56,'B8':57,'C8':58,'D8':59,'E8':60,'F8':61,'G8':62,'H8':63,
-          'A7':48,'B7':49,'C7':50,'D7':51,'E7':52,'F7':53,'G7':54,'H7':55,
-          'A6':40,'B6':41,'C6':42,'D6':43,'E6':44,'F6':45,'G6':46,'H6':47,
-          'A5':32,'B5':33,'C5':34,'D5':35,'E5':36,'F5':37,'G5':38,'H5':39,
-          'A4':24,'B4':25,'C4':26,'D4':27,'E4':28,'F4':29,'G4':30,'H4':31,
-          'A3':16,'B3':17,'C3':18,'D3':19,'E3':20,'F3':21,'G3':22,'H3':23,
-          'A2':8,'B2':9,'C2':10,'D2':11,'E2':12,'F2':13,'G2':14,'H2':15,
-          'A1':0,'B1':1,'C1':2,'D1':3,'E1':4,'F1':5,'G1':6,'H1':7,}
+reset  = {'A8':0,'B8':1,'C8':2,'D8':3,'E8':4,'F8':5,'G8':6,'H8':7,
+          'A7':8,'B7':9,'C7':10,'D7':11,'E7':12,'F7':13,'G7':14,'H7':15,
+          'A6':16,'B6':17,'C6':18,'D6':19,'E6':20,'F6':21,'G6':22,'H6':23,
+          'A5':24,'B5':25,'C5':26,'D5':27,'E5':28,'F5':29,'G5':30,'H5':31,
+          'A4':32,'B4':33,'C4':34,'D4':35,'E4':36,'F4':37,'G4':38,'H4':39,
+          'A3':40,'B3':41,'C3':42,'D3':43,'E3':44,'F3':45,'G3':46,'H3':47,
+          'A2':48,'B2':49,'C2':50,'D2':51,'E2':52,'F2':53,'G2':54,'H2':55,
+          'A1':56,'B1':57,'C1':58,'D1':59,'E1':60,'F1':61,'G1':62,'H1':63,}
 
 switchSquare = {y: x for x, y in squares.items()}
 
@@ -140,9 +144,11 @@ outOfBoard = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,
 
 print(len(outOfBoard))
 
-whitePawnLine = [38,39,40,41,42,43,44,45]
-blackPawnLine = [98,99,100,101,102,103,104,105]
+whitePawnLine = [48,49,50,51,52,53,54,55]
+blackPawnLine = [8,9,10,11,12,13,14,15]
 
 
 whitePice = ['R','N','B','Q','K','P']
 blackPice = ['r','n','b','q','k','p']
+
+pp()
