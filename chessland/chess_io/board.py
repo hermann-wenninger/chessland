@@ -31,6 +31,9 @@ class Board():
         self.startpos = startpos
         self.history = []
         #self.line = self.inline()
+
+    def __getitem__(self, i):
+        return self.startpos[i]
     
     def abbild(self):
         pprint(self.startpos)
@@ -59,8 +62,7 @@ class Board():
     def inline(self):
         return self.startpos.reshape(64)
 
-    def __getitem__(self, i):
-        return self.startpos[i]
+    
 
 
 
