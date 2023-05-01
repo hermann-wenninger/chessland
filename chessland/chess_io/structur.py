@@ -1,5 +1,5 @@
 import numpy as np
-import pprint as pp
+from pprint import pprint
 
 #https://arxiv.org/pdf/0704.3773.pdf
  #CGA 1AVOIDING ROTATED BITBOARDS WITH DIRECT LOOKUPSam Tannous1Durham, North Carolina, USA
@@ -96,10 +96,10 @@ piboard = {'A8':'r','B8':'n','C8':'b','D8':'q','E8':'k','F8':'b','G8':'n','H8':'
            'A2':'P','B2':'P','C2':'P','D2':'P','E2':'P','F2':'P','G2':'P','H2':'P',
            'A1':'R','B1':'N','C1':'B','D1':'Q','E1':'K','F1':'B','G1':'N','H1':'R',
 }
-one_to_64 = np.arange(1,65).reshape(8, 8)[::-1]
-one_to_120 = np.arange(0,120).reshape(12,10)[::-1]
-fullboard = np.arange(0,144).reshape(12,12)[::-1]
-pp(fullboard)
+one_to_64 = np.arange(0,64).reshape(8, 8)
+one_to_120 = np.arange(0,120,dtype=np.uint8).reshape(12,10)
+fullboard = np.arange(0,144,dtype=np.uint8).reshape(12,12)
+pprint(fullboard)
 
 
 oneBoard = np.ones((8,8), dtype=np.uint8)
@@ -142,7 +142,7 @@ outOfBoard = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,
              96,97,84,85,72,73,60,61,48,49,36,37,24,25,34,35,46,47,58,
              59,70,71,82,83,94,95,106,107,118,119]
 
-print(len(outOfBoard))
+
 
 whitePawnLine = [48,49,50,51,52,53,54,55]
 blackPawnLine = [8,9,10,11,12,13,14,15]
@@ -151,4 +151,4 @@ blackPawnLine = [8,9,10,11,12,13,14,15]
 whitePice = ['R','N','B','Q','K','P']
 blackPice = ['r','n','b','q','k','p']
 
-pp()
+print(len(outOfBoard))
