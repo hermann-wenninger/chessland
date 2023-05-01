@@ -1,7 +1,7 @@
 from pprint import pprint
 import numpy as np
 from sys import getsizeof
-
+import structur
 
 position = [['r','n','b','q','k','b','n','r'],
             ['p','p','p','p','p','p','p','p'],
@@ -95,4 +95,5 @@ def test():
     print(getsizeof(Board(position)))
     print(a.__slots__)
     print(getsizeof(a))
+    print(getsizeof(structur))
 test()
