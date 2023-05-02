@@ -1,5 +1,6 @@
 import numpy as np
-
+blackpices_ = [(i,j) for i,j  in enumerate(all_) if j != '.'and ord(j) >82]
+whitepices_ = [(i,j) for i,j  in enumerate(all_) if j != '.'and ord(j) <=82]
 
 start = [['br','bn','bb','bq','bk','bb','bn','br'],
         ['bp','bp','bp','bp','bp','bp','bp','bp'],

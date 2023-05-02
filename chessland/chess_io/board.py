@@ -1,5 +1,6 @@
 from pprint import pprint
 import numpy as np
+from operator import itemgetter
 from sys import getsizeof
 import structur
 
@@ -25,75 +26,80 @@ switchReset = {y: x for x, y in reset.items()}
 
 class Board():
 
-    __slots__ = 'startpos', 'history'
+    __slots__ = 'pos', 'history', 'allpices'
 
-    def __init__(self,startpos):
-        self.startpos = startpos
+    def __init__(self,pos):
+        self.pos = pos
         self.history = []
+        self.allpices = self.inline()
         #self.line = self.inline()
 
     def __getitem__(self, i):
-        return self.startpos[i]
+        return self.pos[i]
     
     def abbild(self):
-        pprint(self.startpos)
+        pprint(self.pos)
 
     def update(self, oldPos, oldPosSquare, newPos, newPosSquare, attac=False):
-        self.startpos = np.array(self.startpos, dtype = np.chararray).reshape(64)
+        self.pos = np.array(self.pos, dtype = np.chararray).reshape(64)
        
-        self.startpos[newPos] = self.startpos[oldPos]
-        self.startpos[oldPos] = '.'
+        self.pos[newPos] = self.pos[oldPos]
+        self.pos[oldPos] = '.'
         
         if attac == False:
-            self.history.append((self.startpos[newPos],oldPos,oldPosSquare,newPos,newPosSquare))
+            self.history.append((self.pos[newPos],oldPos,oldPosSquare,newPos,newPosSquare))
         else:
-            self.history.append((self.startpos[oldPos],oldPosSquare,oldPos,'X',self.startpos[newPos],newPos,newPosSquare))
-        self.startpos = self.startpos.reshape(8,8)
+            self.history.append((self.pos[oldPos],oldPosSquare,oldPos,'X',self.pos[newPos],newPos,newPosSquare))
+        self.pos = self.pos.reshape(8,8)
     
     def reset(self):
-        self.startpos = self.startpos.reshape(64)
+        self.pos = self.pos.reshape(64)
         lastE = self.history[-1]
         if lastE[2] is not 'X':
             del self.history[-1] 
-            self.startpos[lastE[1]] = lastE[0] 
-            self.startpos[lastE[3]] = '.'
-            self.startpos = self.startpos.reshape(8,8)
+            self.pos[lastE[1]] = lastE[0] 
+            self.pos[lastE[3]] = '.'
+            self.pos = self.pos.reshape(8,8)
 
     def inline(self):
-        return self.startpos.reshape(64)
+        all_ = np.array(self.pos, dtype = np.chararray).reshape(64)
+        black = [(i,j) for i,j  in enumerate(all_) if j != '.'and ord(j) >82]
+        white = [(i,j) for i,j  in enumerate(all_) if j != '.'and ord(j) <=82]
+        return [black,white]
 
     
 
 
 
 
-def test():
-    a = Board(position)
-    a.abbild()
-    a.update(48,'A2',32,'A3')
-    a.abbild()
-    print(a.history)
-    a.update(49,'B2',33,'B4')
-    a.abbild()
-    a.update(8,'A7',24,'A5')
-    print(a.history)
-    a.abbild()
-    a.reset()
-    print(a.history)
-    a.abbild()
-    a.update(8,'A7',24,'A5')
-    print(a.history)
-    a.abbild()
-    a.update(33,'B4',24,'A5',attac=True)
-    a.abbild()
-    print(a.history)
-    x = a.startpos
-    print(x[5][3])
-    x = a.inline()
-    print(x[0:9])
-    print(a[0][2])
-    print(getsizeof(Board(position)))
-    print(a.__slots__)
-    print(getsizeof(a))
-    print(getsizeof(structur))
-test()
+
+a = Board(position)
+a.abbild()
+a.update(48,'A2',32,'A3')
+a.abbild()
+print(a.history)
+a.update(49,'B2',33,'B4')
+a.abbild()
+a.update(8,'A7',24,'A5')
+print(a.history)
+a.abbild()
+a.reset()
+print(a.history)
+a.abbild()
+a.update(8,'A7',24,'A5')
+print(a.history)
+a.abbild()
+a.update(33,'B4',24,'A5',attac=True)
+a.abbild()
+print(a.history)
+x = a.pos
+print(x[5][3])
+#x = a.inline()
+#print(x[0:9])
+#print(a[0][2])
+print(getsizeof(Board(position)))
+print(a.__slots__)
+print(getsizeof(a))
+print(getsizeof(structur))
+#print(a.inline())
+print(a.allpices)
