@@ -27,11 +27,10 @@ switchReset = {y: x for x, y in reset.items()}
 class Board():
 
     __slots__ = 'pos', 'history', 'allpices'
-
     def __init__(self,pos):
         self.pos = pos
         self.history = []
-        self.allpices = self.inline()
+        self.allpices = []
         #self.line = self.inline()
 
     def __getitem__(self, i):
@@ -51,7 +50,17 @@ class Board():
         else:
             self.history.append((self.pos[oldPos],oldPosSquare,oldPos,'X',self.pos[newPos],newPos,newPosSquare))
         self.pos = self.pos.reshape(8,8)
-    
+
+        all_ = np.array(self.pos, dtype = np.chararray).reshape(64)
+        black = [(i,j) for i,j  in enumerate(all_) if j != '.'and ord(j) >82]
+        white = [(i,j) for i,j  in enumerate(all_) if j != '.'and ord(j) <=82]
+        self.allpices = [black, white]
+        
+
+
+
+
+
     def reset(self):
         self.pos = self.pos.reshape(64)
         lastE = self.history[-1]
@@ -73,33 +82,3 @@ class Board():
 
 
 
-a = Board(position)
-a.abbild()
-a.update(48,'A2',32,'A3')
-a.abbild()
-print(a.history)
-a.update(49,'B2',33,'B4')
-a.abbild()
-a.update(8,'A7',24,'A5')
-print(a.history)
-a.abbild()
-a.reset()
-print(a.history)
-a.abbild()
-a.update(8,'A7',24,'A5')
-print(a.history)
-a.abbild()
-a.update(33,'B4',24,'A5',attac=True)
-a.abbild()
-print(a.history)
-x = a.pos
-print(x[5][3])
-#x = a.inline()
-#print(x[0:9])
-#print(a[0][2])
-print(getsizeof(Board(position)))
-print(a.__slots__)
-print(getsizeof(a))
-print(getsizeof(structur))
-#print(a.inline())
-print(a.allpices)
