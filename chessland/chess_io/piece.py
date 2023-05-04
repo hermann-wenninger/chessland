@@ -1,19 +1,25 @@
 import pygame
-
 class Piece:
-    def __init__(self, color, x, y, piece_type):
+    def __init__(self, type, pos, color, board):
+        self.pos = pos
         self.color = color
-        self.x = x
-        self.y = y
-        self.type = piece_type
-
+        self.board = board
+        self.type = self.type()
+    
     def draw(self, surface):
         img = pygame.image.load(f"img/{self.color}_{self.type}.png")
         surface.blit(img, (self.x*75+10, self.y*75+10))
+        pass
 
-# set up the pieces
+    def get_poss_moves_attacts_shelters(self):
+        pass
 
+    def type(self):
+        return ord(type)
 
-# draw the pieces
-#for piece in pieces:
-   #piece.draw(board)
+print('P',ord('P'))
+print('R',ord('R'))
+print('N',ord('N'))
+print('B',ord('B'))
+print('Q',ord('Q'))
+print('K',ord('K'))

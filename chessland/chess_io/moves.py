@@ -65,7 +65,7 @@ class Helper():
         if arg == isinstance(   )
 
 class MovsAttks():
-    whitePawnLine = np.array([98,99,100,101,102,103,104,105],dtype=np.uint8)
+    
     __slots__ = 'weight','freschblack'
     def __init__(self, a):
         self.freschblack = a.allpices[0]
