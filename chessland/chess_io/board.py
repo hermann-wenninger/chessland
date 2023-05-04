@@ -34,7 +34,8 @@ class Board():
         #self.line = self.inline()
 
     def __getitem__(self, i):
-        return self.pos[i]
+        x = np.array(self.pos, dtype = np.chararray).reshape(64)
+        return x[i]
     
     def abbild(self):
         pprint(self.pos)
@@ -64,11 +65,12 @@ class Board():
     def reset(self):
         self.pos = self.pos.reshape(64)
         lastE = self.history[-1]
-        if lastE[2] is not 'X':
+        if lastE[2] != 'X':
             del self.history[-1] 
             self.pos[lastE[1]] = lastE[0] 
             self.pos[lastE[3]] = '.'
             self.pos = self.pos.reshape(8,8)
+        return self.pos, self.history
 
     def inline(self):
         all_ = np.array(self.pos, dtype = np.chararray).reshape(64)

@@ -1,10 +1,14 @@
 import pygame
+
 class Piece:
-    def __init__(self, type, pos, board):
+    def __init__(self, typ, pos, board):
         self.pos = pos
-      
         self.board = board
-        self.type = self.type()
+        self.typ = typ
+        self.p = self.typei()
+        self.posmoves = []
+        self.attacs =[]
+        self.schelters =[]
     
     def draw(self, surface):
         img = pygame.image.load(f"img/{self.color}_{self.type}.png")
@@ -14,8 +18,9 @@ class Piece:
     def get_poss_moves_attacts_shelters(self):
         pass
 
-    def type(self):
-        return ord(type)
+    def typei(self):
+        self.p = ord(self.typ)
+        return self.p
 
 print('P',ord('P'))
 print('R',ord('R'))
