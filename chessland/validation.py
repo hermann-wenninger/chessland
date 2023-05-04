@@ -92,8 +92,8 @@ CASTELBIT = {WKCA:1,WQCA:2,BKCA:4,BQCA:8} # idee from bluefeversoft
 OUTOFB_white = []
 OUTOFB_black = []
 
-whitepawnline = [31,32,33,34,35,36,37,38]
-blackpawnline = [81,82,83,84,85,86,87,88]
+whitepawnline = [110,111,112,113,114,115,116,117]
+blackpawnline = [26,27,28,29,30,31,32,33]
 
 
 

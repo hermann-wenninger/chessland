@@ -1,8 +1,8 @@
 import pygame
 class Piece:
-    def __init__(self, type, pos, color, board):
+    def __init__(self, type, pos, board):
         self.pos = pos
-        self.color = color
+      
         self.board = board
         self.type = self.type()
     
