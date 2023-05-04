@@ -85,8 +85,8 @@ OUTOFBOARD =(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,116,
              102,103,104,105,106,107,108,109,110,111,112,113,114,115,118,119)
 
 
-WHITEPIECES = ['wr','wn','wb','wq','wk','wp']
-BLACKPIECES = ['br','bn','bb','bq','bk','bp']
+WHITEPIECES = ['R','N','B','Q','K','P']
+BLACKPIECES = ['r','n','b','q','k','p']
 ALLPIECES = WHITEPIECES + BLACKPIECES
 
 WKCA = 1 #0001
