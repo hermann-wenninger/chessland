@@ -55,7 +55,7 @@ class Board():
         all_ = np.array(self.pos, dtype = np.chararray).reshape(64)
         black = [(i,j) for i,j  in enumerate(all_) if j != '.'and ord(j) >82]
         white = [(i,j) for i,j  in enumerate(all_) if j != '.'and ord(j) <=82]
-        self.allpices = [black, white]
+        self.allpices = [white, black]
         
 
 

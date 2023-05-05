@@ -5,17 +5,17 @@ class Piece:
         self.pos = pos
         self.board = board
         self.typ = typ
-        self.p = self.typei()
-        self.posmoves = []
-        self.attacs =[]
-        self.schelters =[]
+        self.typnum = self.typei()
+        self.mov = []
+        self.attac =[]
+        self.schelt =[]
     
     def draw(self, surface):
-        img = pygame.image.load(f"img/{self.color}_{self.type}.png")
+        img = pygame.image.load(f"img/{self.typ}{self.typnum}.png")
         surface.blit(img, (self.x*75+10, self.y*75+10))
         pass
 
-    def get_poss_moves_attacts_shelters(self):
+    def get_mov_attac_shelt(self):
         pass
 
     def typei(self):
