@@ -110,21 +110,21 @@ blackpawnline = [26,27,28,29,30,31,32,33]
 
 
 
-def structtest():
-    print('one_to_64',one_to_64)
-    print('ones',ones)
-    print('zeros',zeros)
-    print('board',board)
-    print('filonum',filonum)
+# def structtest():
+#     print('one_to_64',one_to_64)
+#     print('ones',ones)
+#     print('zeros',zeros)
+#     print('board',board)
+#     print('filonum',filonum)
     
-    print('PIECES',PIECES)
-    print('FILES',FILES)
-    print('RANKS',RANKS)
+#     print('PIECES',PIECES)
+#     print('FILES',FILES)
+#     print('RANKS',RANKS)
   
-    print('COLOURS',COLOURS)
-    print('THETRUTH',THETRUTH)
-    print('piceboard', piceboard)
-    print('table',table)
-    print('one-to_120',one_to_120)
+#     print('COLOURS',COLOURS)
+#     print('THETRUTH',THETRUTH)
+#     print('piceboard', piceboard)
+#     print('table',table)
+#     print('one-to_120',one_to_120)
 
-structtest()
+# structtest()
