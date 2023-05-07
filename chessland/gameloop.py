@@ -146,6 +146,8 @@ def take_best_move(moves,attacs):
     print('take best zug',x)
     return x
 
+def write_hystory(x):
+    history.append(x)
 
 def write_move(best_move):
     '''all data for a real move and the annotation'''
@@ -194,7 +196,7 @@ def zug_white():
 def zug_black():
     print('zug schwarz')
     #x, y = iterate_over_black(start, BLACKPIECES)
-    print(x,y)
+    
 
    
 zug = 0
