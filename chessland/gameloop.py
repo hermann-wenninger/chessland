@@ -28,6 +28,10 @@ zug = 1
 
 ALLPIECES = WHITEPIECES + BLACKPIECES
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 840e7b282e1a6301f605c50f519b9fc9e1d1e832
 def iterate_over_black(start, COLOR_OF_PICES):
     '''iterate over all pices from one black pices and give back 
     the number of the 120er board 
@@ -171,10 +175,17 @@ def move_on_boards(bestmovefromto):
 
    
 
+<<<<<<< HEAD
+
+def zug_black():
+    print('zug schwarz')
+    #x, y = iterate_over_black(start, BLACKPIECES)
+=======
    
 
 
 
+>>>>>>> 840e7b282e1a6301f605c50f519b9fc9e1d1e832
    
    
 
