@@ -1,7 +1,20 @@
 *.jpg
 *.jpeg
+*.png
 
 *.c
 *.h
+*.o
 
 /gameweights
+
+*.pyc
+
+*.xslt
+Dockerfile
+*.xlsx
+
+*.pdf
+
+*.sh
+*.yml

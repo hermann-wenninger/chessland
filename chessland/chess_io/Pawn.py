@@ -3,6 +3,7 @@ import numpy as np
 
 #first part module
 from piece import Piece
+from Qween import Qween
 from board import Board
 from board import position
 from validation import table
@@ -10,6 +11,7 @@ from validation import tableswitch
 from validation import outofboard
 from validation import one_to_64
 from validation import one_to_144
+import pprint
 
 
 aaaa = Board(position)
@@ -66,15 +68,68 @@ class Pawn(Piece):
            
             i = self.board[e]
             j = self.board[f]
-            
-            self.attac.append([i,j])
-            self.mov.append([kleiner,grosser])
-        #if self.typ == 'p' and self.pos in self.blackPawnLine:
-            #return self.attac, self.mov,self.schelt
+            if b not in outofboard and j != '.' and ord(j) >82:
+                 self.attac.append(['P',f,j])
+            if b not in outofboard and j != '.' and ord(j) <82:
+                 self.schelt.append(['P',f,j])
+            if a not in outofboard and i != '.' and ord(j) <82:
+                 self.attac.append(['P',e,i])
+            if a not in outofboard and i != '.' and ord(j) >82:
+                 self.schelt.append(['P',e,i])
+
+        if self.typ == 'p' and self.pos in self.whitePawnLine:
+            c = self.table[self.pos] +12 #go easy
+            d = self.table[self.pos] +24 #go fast
+            kl_onboard = self.tableswitch[c]
+            gr_onboard = self.tableswitch[d]
+            kleiner = self.board[self.tableswitch[c]]
+            grosser = self.board[self.tableswitch[d]]
+            if kleiner == '.':
+                  self.mov.append(['P',kl_onboard])
+            if kleiner == '.' and grosser == '.':
+                  self.mov.append(['P', gr_onboard])#gut bis hie hin
+            a = self.table[self.pos] +13 #attack east
+            b = self.table[self.pos] +11 #attac west
+            e = self.tableswitch[a] #attack east on easy bord
+            f = self.tableswitch[b] #attack west on easy board
+           
+            i = self.board[e]
+            j = self.board[f]
+            if b not in outofboard and j != '.' and ord(j) >82:
+                 self.attac.append(['P',f,j])
+            if b not in outofboard and j != '.' and ord(j) <82:
+                 self.schelt.append(['P',f,j])
+            if a not in outofboard and i != '.' and ord(j) <82:
+                 self.attac.append(['P',e,i])
+            if a not in outofboard and i != '.' and ord(j) >82:
+                 self.schelt.append(['P',e,i])
+
+    def __del__(self):
+        print(self.typ,self.pos,"is now destroyed and live in")
+
+    def update(self, num):
+        wProLine = [0,1,2,3,4,5,6,7]
+        bProLine = [56,57,58,59,60,61,62,63]
+        if self.typ == 'P' and num in wProLine:
+             self = Qween('Q',num, self.board)
+
+             print('a new instance of a special whitepice')
+        if self.typ == 'p' and num in bProLine:
+             self.typ = 'q'
+             self.pos = num
+             self.board[num]= 'q'
+             print('a new instance of a special whitepice')
+        return 
             
 x = Pawn('P',49,aaaa)
 x.mov_attac_shelt()
-print('aatack schelt',x.attac, x.mov)
-print('unsinn')
+print('aatack',x.attac)
+print('mov', x.mov)
+print('schelt',x.schelt)
 
 print(x.typ,x.p,x.pos,x.board[0])
+x.update(0)
+print('typ',x.typ)
+print('pos',x.pos)
+print('board',x.board[0])
+

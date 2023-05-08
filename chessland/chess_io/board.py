@@ -9,7 +9,7 @@ position = [['r','n','b','q','k','b','n','r'],
             ['.','.','.','.','.','.','.','.'],
             ['.','.','.','.','.','.','.','.'],
             ['.','.','.','.','.','.','.','.'],
-            ['Q','.','q','.','.','.','.','.'],
+            ['r','.','Q','.','.','.','.','.'],
             ['P','P','P','P','P','P','P','P'],
             ['R','N','B','Q','K','B','N','R']]
 
@@ -37,6 +37,9 @@ class Board():
         x = np.array(self.pos, dtype = np.chararray).reshape(64)
         return x[i]
     
+    def __setitem__(self, i, elem):
+        np.array(self.pos, dtype = np.chararray).reshape(64)[i] = elem
+
     def abbild(self):
         pprint(self.pos)
 
