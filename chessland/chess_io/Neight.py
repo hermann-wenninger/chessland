@@ -26,6 +26,37 @@ class Neight(Piece):
 
     def __init__(self, typ, pos, board):
         super().__init__(typ, pos, board)
-        self.mov = []
+        #self.mov = []
         self.attac =[]
         self.schelt =[]
+
+    def mov_attac_shelt(self):
+        hl = []
+        x = [25,23,14,-10,-23,-25,10,-14]
+        for i in x:
+            y = self.table[self.pos] +i
+            print(self.table[self.pos])
+            if y not in outofboard:
+                hl.append(y)
+                print(self.board[tableswitch[y]])
+        for i in hl:
+            x = ord(self.board[tableswitch[i]])
+            print('ord .', ord('.'))
+            if x >82:
+                pass
+
+            
+        print('inner',hl)
+        
+aaaa = Board(position)
+x = Neight('N',57,aaaa)
+x.mov_attac_shelt()
+#print('aatack',x.attac)
+#print('mov', x.mov)
+#print('schelt',x.schelt)
+
+#print(x.typ,x.p,x.pos,x.board[0])
+#x.update(0)
+print('typ',x.typ)
+print('pos',x.pos)
+print('board',x.board[57])
