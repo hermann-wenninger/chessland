@@ -26,7 +26,7 @@ class Neight(Piece):
 
     def __init__(self, typ, pos, board):
         super().__init__(typ, pos, board)
-        #self.mov = []
+        self.mov = []
         self.attac =[]
         self.schelt =[]
 
@@ -43,6 +43,12 @@ class Neight(Piece):
             x = ord(self.board[tableswitch[i]])
             print('ord .', ord('.'))
             if x >82:
+                self.attac.append(['N',i,x])
+            if x == '.':
+                self.mov.append(['N',i,x])
+            if x < 82:
+                self.schelt.append(['N',i,x])
+
                 pass
 
             
