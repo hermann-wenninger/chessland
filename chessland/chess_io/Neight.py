@@ -41,13 +41,14 @@ class Neight(Piece):
                 print(self.board[tableswitch[y]])
         for i in hl:
             x = ord(self.board[tableswitch[i]])
+            a = self.board[tableswitch[i]]
             print('ord .', ord('.'))
             if x >82:
-                self.attac.append(['N',i,x])
-            if x == '.':
-                self.mov.append(['N',i,x])
-            if x < 82:
-                self.schelt.append(['N',i,x])
+                self.attac.append(['N',i,a])
+            if x == 46:
+                self.mov.append(['N',i,a])
+            if x < 82 and x > 46:
+                self.schelt.append(['N',i,a])
 
                 pass
 
@@ -57,9 +58,9 @@ class Neight(Piece):
 aaaa = Board(position)
 x = Neight('N',57,aaaa)
 x.mov_attac_shelt()
-#print('aatack',x.attac)
-#print('mov', x.mov)
-#print('schelt',x.schelt)
+print('aatack',x.attac)
+print('mov', x.mov)
+print('schelt',x.schelt)
 
 #print(x.typ,x.p,x.pos,x.board[0])
 #x.update(0)
