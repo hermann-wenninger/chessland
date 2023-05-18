@@ -29,3 +29,6 @@ class Bishop(Piece):
         self.mov = []
         self.attac =[]
         self.schelt =[]
+    
+    def get_mov_attac_shelt(self):
+        return super().get_mov_attac_shelt()
